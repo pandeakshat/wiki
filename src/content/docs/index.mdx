@@ -1,0 +1,56 @@
+---
+title: SYSTEM STATUS
+description: Fortress of Competency.
+template: splash
+hero:
+  title: "TALENT IS BLOOM."
+  tagline: "Instinct is Polish. Competency is Currency."
+  actions:
+    - text: Access Projects
+      link: /projects/project-structure
+      icon: right-arrow
+      variant: primary
+    - text: Review Intel
+      link: /intel/
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import KnowledgeGraph from '../../components/KnowledgeGraph.jsx';
+
+<div class="not-content">
+  <div style={{ 
+      border: '1px solid #333', 
+      background: '#000',
+      padding: '2px',
+      marginBottom: '2rem'
+  }}>
+    <KnowledgeGraph client:only="react" />
+  </div>
+</div>
+
+## CURRENT OBJECTIVES
+
+<CardGrid>
+  <Card title="MISSION: PowerBI Master" icon="rocket">
+    **Status:** ACTIVE <br/>
+    **Focus:** Financial Logic (DAX) <br/>
+    **Protocol:** 1 Hour Technical Audio Daily.
+  </Card>
+  
+  <Card title="THE PROTOCOLS" icon="seti:lock">
+    1. **05:00** - Hardware Upgrade (Gym)
+    2. **09:30** - Deep Work (Output)
+    3. **Alignment** - Respect the body. Order the finances.
+  </Card>
+
+  <Card title="LATEST ARTIFACTS" icon="github">
+    * [DAX Financial Dashboard](/artifacts/dax-dashboard)
+    * [System Architecture Notes](/intel/system-design)
+  </Card>
+  
+  <Card title="ALIGNMENT CHECK" icon="warning">
+    "Am I avoiding the hard technical work?" <br/>
+    *Competency is the only shield.*
+  </Card>
+</CardGrid>

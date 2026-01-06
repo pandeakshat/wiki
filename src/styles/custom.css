@@ -1,0 +1,43 @@
+/* src/styles/custom.css */
+
+/* 1. The "Clean Desk" Background */
+:root {
+  --sl-color-bg-nav: #0e1013;
+  --sl-color-bg: #0e1013;       /* Deep Gunmetal */
+  --sl-color-bg-sidebar: #0e1013;
+  --sl-color-hairline: #2d333b; /* Subtle borders */
+  --sl-color-accent-high: #ffffff;
+  --sl-color-accent: #a8b1be;   /* Steel Grey */
+  --sl-color-text-accent: #ffffff;
+}
+
+/* 2. "Terminal" Typography */
+/* Make all headers feel like command line inputs */
+h1, h2, h3, h4, .sl-markdown-content code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
+  letter-spacing: -0.02em;
+}
+
+/* 3. Sharp Edges (No friendly round corners) */
+.card, img, button, pre {
+  border-radius: 2px !important;
+}
+
+/* 4. The Graph Container - "The Radar" */
+.graph-container canvas {
+  opacity: 0.8;
+  filter: grayscale(100%) contrast(120%); /* Make the graph look like a HUD */
+}
+
+/* 5. Sidebar - "The Inventory" */
+/* Make the sidebar text smaller and more dense */
+.sidebar-content a {
+  font-size: 0.9rem;
+  font-family: 'JetBrains Mono', monospace;
+  opacity: 0.8;
+}
+.sidebar-content a[aria-current="page"] {
+  opacity: 1;
+  border-left: 2px solid white; /* Active indicator */
+  padding-left: 0.8rem;
+}

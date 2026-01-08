@@ -34,11 +34,19 @@ export default defineConfig({
                 },
                 {
                     label: 'Learnings', // "The Output"
-                    autogenerate: { directory: 'learnings' },
+                    items: [
+                        { label: 'Python', link: '/learnings/python' },
+                        { label: 'SQL', link: '/learnings/sql' },
+                        { label: 'Data Analysis', link: '/learnings/data-analysis' },
+                        { label: 'Excel', link: '/learnings/excel' }
+                    ]
                 },
                 {
                     label: 'INTEL', // "The Input"
-                    autogenerate: { directory: 'intel' },
+                    items: [
+                        { label: 'Intel Item 1', link: '/intel/item-1' },
+                        { label: 'Intel Item 2', link: '/intel/item-2' }
+                    ]
                 },
                 ],
         }), 

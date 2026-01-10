@@ -41,6 +41,13 @@ export default defineConfig({
                         { label: 'Excel', link: '/learnings/excel' }
                     ]
                 },
+                                {
+                    label: 'CheatSheet', // "The Output"
+                    items: [
+                        { label: 'Python', link: '/cheatbook/python' },
+                        { label: 'SQL', link: '/cheatbook/sql' }
+                    ]
+                },
                 {
                     label: 'INTEL', // "The Input"
                     items: [

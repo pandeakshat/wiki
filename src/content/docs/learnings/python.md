@@ -3,104 +3,106 @@ title: Python - From Scratch to Expert
 description: A guide to python.
 ---
 
-# Arithmetic 
+## I. Python Fundamentals
 
-Python utilizes the **PEMDAS** rule for arithmetic operations, i.e., 
-**P**arenthesis
-**E**xponential
-**M**ultiplication
-**D**ivision
-**A**ddition
-**S**ubtraction, 
-in that order (top to bottom).
+### 1. Arithmetic & Order of Operations
+Python follows the **PEMDAS** rule for operator precedence.
+* **P**arentheses `()`
+* **E**xponents `**`
+* **M**ultiplication `*`, **D**ivision `/`, **F**loor Division `//`, **M**odulus `%` (evaluated left-to-right)
+* **A**ddition `+`, **S**ubtraction `-` (evaluated left-to-right)
 
-|Operator|Name|Description|
-|---|---|---|
-|`a + b`|Addition|Sum of `a` and `b`|
-|`a - b`|Subtraction|Difference of `a` and `b`|
-|`a * b`|Multiplication|Product of `a` and `b`|
-|`a / b`|True division|Quotient of `a` and `b`|
-|`a // b`|Floor division|Quotient of `a` and `b`, removing fractional parts|
-|`a % b`|Modulus|Integer remainder after division of `a` by `b`|
-|`a ** b`|Exponentiation|`a` raised to the power of `b`|
-|`-a`|Negation|The negative of `a`|
+### 2. Variables & Functions
+* **Comments:** Use `#` for single-line comments.
+* **Docstrings:** Use `""" description """` immediately after defining a function to document it.
+* **Function Template:**
+    ```python
+    def function_name(input_variable=default_value):
+        # computational statements
+        return output_variable
+    ```
+    * *Note:* You can assign **default values** to parameters to prevent errors if arguments are missing during the call.
+* **Scope:** Python defines scope via indentation (whitespace).
+    * **LEGB Rule:** Python looks for variables in this order: **L**ocal -> **E**nclosing -> **G**lobal -> **B**uilt-in.
 
-In Python, comments are denoted using # at the beginning.
+### 3. Data Types & "Peculiarities"
+* **Strings:**
+    * Immutable (cannot be changed after creation).
+    * Can have length 0 (`""`).
+    * **Math:** `String * Integer` repeats the string. `String * Float` raises an error.
+    * **Casting:** `float("3.5")` works, but `float("three")` fails.
+* **Booleans:**
+    * Used in conditional logic.
+    * `True` equates to 1, `False` to 0.
 
-Python function template -
-def function_name (input_variable):
-	 ---computational statements---
-	 return output_variable
+### 4. Operators
+**Conditional Operators**
+| Symbol | Meaning |
+| :--- | :--- |
+| `==` | Equal to |
+| `!=` | Not equal to |
+| `<` / `<=` | Less than / Less than or equal |
+| `>` / `>=` | Greater than / Greater than or equal |
 
-In Python, scope is managed/defined using indentations (tab-space) with local/global scope applicable (inside a function/class or global declaration)
+**Logical & Identity Operators**
+* **Logical:** `and`, `or`, `not`
+* **Identity:** `is`, `is not` (Checks if two variables point to the same object in memory, not just equal values).
+* **Membership:** `in`, `not in` (Checks if a value exists in a sequence like a list or string).
 
-Peculiar and Important Factors around Data Types 
-- Cannot Multiply String with Float (but String * Integer works)
-- Type casting is possible, however it does not "automatically" do calculations for complicated conversions (character string to float does not work, but numerical string to float will)
-- Strings can have 0 length (empty quotation marks)
-- Boolean data type can be utilized using conditional operators in assignment (>, <, not)
+---
 
-Conditional Operators
+## II. Data Structures
 
-| **Symbol** | **Meaning**              |
-| ---------- | ------------------------ |
-| ==         | equals                   |
-| !=         | does not equal           |
-| <          | less than                |
-| <=         | less than or equal to    |
-| >          | greater than             |
-| >=         | greater than or equal to |
+### 1. Strings & Slicing
+* **Escape Characters:**
+    * `\n`: Newline
+    * `\t`: Tab
+    * `\'`: Single quote (inside single-quoted string)
+    * `\\`: Backslash
+* **Slicing Syntax:** `iterable[start:stop:step]`
+    * First `x` entries: `[:x]`
+    * Last `y` entries: `[-y:]`
+    * Reverse string: `[::-1]`
 
-List Slicing -
-- to pull the first `x` entries, you use `[:x]`
-- to pull the last `y` entries, you use `[-y:]`
+### 2. Lists vs. Dictionaries
+* **Lists:** Ordered, mutable sequences. Accessed by integer index.
+* **Dictionaries:** Key-Value pairs `{key: value}`. Unordered (conceptually). Accessed by Key.
+    * *Note:* Keys must be immutable (strings, numbers, tuples).
 
-Docstrings (""" """) are utilized to provide descriptions for functions (defined)
+---
 
+## III. Pandas for Data Science
 
-Print statement in python have an attribute (sep) that can be utilized. Default is a single space.
+### 1. Core Components
+* **DataFrame:** A table consisting of rows (records) and columns.
+* **Series:** A single column (sequence of data). A DataFrame is essentially a collection of Series sharing an index.
 
-It is possible to add default values to functions input_variable to avoid errors.
+### 2. Data Selection (Indexing)
+* **`df.iloc[]` (Index-based):** Selects by integer position (0 to length-1).
+    * Example: `df.iloc[0]` (First row).
+* **`df.loc[]` (Label-based):** Selects by the name of the index/column.
+    * Example: `df.loc['row_name', 'column_name']`.
+* **Conditionals:** `df.loc[df.column_name == 'value']`.
 
+### 3. Data Cleaning & Handling Nulls
+* **Detection:** `pd.isnull()` (or `df.isnull()`) and `pd.notnull()`.
+* **Correction:**
+    * `fillna(value)`: Fills NaN with a specific value.
+    * `replace(old, new)`: Swaps specific values.
+* **Renaming:** `df.rename(columns={'old_name': 'new_name'})`.
 
-| Operator                                                                                                                                                                                                                                                                                                            | Description                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `(expressions...)`,<br><br>`[expressions...]`, `{key: value...}`, `{expressions...}`                                                                                                                                                                                                                                | Binding or parenthesized expression, list display, dictionary display, set display                                                          |
-| `x[index]`, `x[index:index]`, `x(arguments...)`, `x.attribute`                                                                                                                                                                                                                                                      | Subscription, slicing, call, attribute reference                                                                                            |
-| [`await x`](https://docs.python.org/3/reference/expressions.html#await)                                                                                                                                                                                                                                             | Await expression                                                                                                                            |
-| `**`                                                                                                                                                                                                                                                                                                                | Exponentiation [[5]](https://docs.python.org/3/reference/expressions.html#id23)                                                             |
-| `+x`, `-x`, `~x`                                                                                                                                                                                                                                                                                                    | Positive, negative, bitwise NOT                                                                                                             |
-| `*`, `@`, `/`, `//`, `%`                                                                                                                                                                                                                                                                                            | Multiplication, matrix multiplication, division, floor division, remainder [[6]](https://docs.python.org/3/reference/expressions.html#id24) |
-| `+`, `-`                                                                                                                                                                                                                                                                                                            | Addition and subtraction                                                                                                                    |
-| `<<`, `>>`                                                                                                                                                                                                                                                                                                          | Shifts                                                                                                                                      |
-| `&`                                                                                                                                                                                                                                                                                                                 | Bitwise AND                                                                                                                                 |
-| `^`                                                                                                                                                                                                                                                                                                                 | Bitwise XOR                                                                                                                                 |
-| `\|`                                                                                                                                                                                                                                                                                                                | Bitwise OR                                                                                                                                  |
-| [`in`](https://docs.python.org/3/reference/expressions.html#in), [`not in`](https://docs.python.org/3/reference/expressions.html#not-in), [`is`](https://docs.python.org/3/reference/expressions.html#is), [`is not`](https://docs.python.org/3/reference/expressions.html#is-not), `<`, `<=`, `>`, `>=`, `!=`, `== | Comparisons, including membership tests and identity tests                                                                                  |
-| [`not x`](https://docs.python.org/3/reference/expressions.html#not)                                                                                                                                                                                                                                                 | Boolean NOT                                                                                                                                 |
-| [`and`](https://docs.python.org/3/reference/expressions.html#and)                                                                                                                                                                                                                                                   | Boolean AND                                                                                                                                 |
-| [`or`](https://docs.python.org/3/reference/expressions.html#or)                                                                                                                                                                                                                                                     | Boolean OR                                                                                                                                  |
-| [`if`](https://docs.python.org/3/reference/expressions.html#if-expr) – `else`                                                                                                                                                                                                                                       | Conditional expression                                                                                                                      |
-| [`lambda`](https://docs.python.org/3/reference/expressions.html#lambda)                                                                                                                                                                                                                                             | Lambda expression                                                                                                                           |
-| `:=`                                                                                                                                                                                                                                                                                                                | Assignment expression                                                                                                                       |
+### 4. Data Transformation
+* **Summary:** `df.describe()` gives count, mean, std, min, max, etc.
+* **Sorting:** `df.sort_values(by='column')`.
+* **Mapping:**
+    * `map()`: Used on **Series** to substitute each value with another.
+    * `apply()`: Used on **Series** or **DataFrame** to apply a function across an axis.
+* **Grouping:** `df.groupby('column').mean()` splits data into groups, applies a function, and combines results.
 
+### 5. Combining Data
+* **`concat()`**: Stacks dataframes (top-to-bottom or side-by-side). Good for similar structures.
+* **`join()`**: Combines based on **index**.
+* **`merge()`**: Combines based on **column values** (SQL-style joins: inner, outer, left, right).
 
-In python, attributes can be called using dot (.) with attribute name (e.g., imag). Methods can also be called with variables but require parentheses at the end (e.g., bit_length() )
-
-Zen of Python:
-	Readability counts.  
-	Explicit is better than implicit.
-
-String helper-
-
-|What you type...|What you get|example|`print(example)`|
-|---|---|---|---|
-|`\'`|`'`|`'What\'s up?'`|`What's up?`|
-|`\"`|`"`|`"That's \"cool\""`|`That's "cool"`|
-|`\\`|`\`|`"Look, a mountain: /\\"`|`Look, a mountain: /\`|
-|`\n`||`"1\n2 3"`|`1`  <br>`2 3`|
-
-Strings are very similar to lists but are immutable.
-
-Dictionaries are a built-in data structure that form {'key' : value} pairs
+---
 
